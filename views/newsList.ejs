@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Hack</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Экологические новости камчатки</h2>
+        <div class="news-list">
+            <% news.forEach((newItem, index)=> { %>
+                <div class="new-item">
+                    <div class="new-img"><img src="<%= newItem.pictures_list[0].picture_path %>" alt=""></div>
+                    <div class="new-info">
+                        <h3 class="new-title"><%= newItem.title %> </h3>
+                        <div class="new-text">
+                            <% newItem.text.split('$/*').forEach(item => { %>
+                                <p class="item"><%= item %> </p>
+                            <% }) %>
+                        </div>
+                        
+                        <div class="new-source"><a href="<%= newItem.parsed_url %>">Посмотреть в источнике</a>   </div>
+                        <div class="source-views">Просмотров в источнике: <a href=""></a><%= newItem.views_on_parsed_site %> </div>
+                        <span class="num"><%= index+1 %> </span>
+                    </div>
+                    
+                </div>
+                
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
